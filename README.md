@@ -11,10 +11,10 @@ Notes:
 * J'utilise pgAdmin et le DB de uOttawa
 
 ### Modele ER
-![alt text](assets/ER-model.png "ER Model")
+![alt text](assets/ER-model.PNG "ER Model")
 
 ### Modele relationnel
-![alt text](assets/relational-model.png "Relational Model")
+![alt text](assets/relational-model.PNG "Relational Model")
 
 ### Schéma SQL
 ```sql
@@ -40,7 +40,7 @@ VALUES
   (5, 'Alyssa Rose', '12-31-1999', false),
   (6, 'Michelle Beaulieu', '10-01-1980', false);
 ```
-![alt text](assets/insert.png "Insert")
+![alt text](assets/insert.PNG "Insert")
   
 Update example
 ```sql
@@ -48,7 +48,7 @@ UPDATE athletes
 SET full_name = 'Kailey Vincent'
 WHERE athlete_id = 6
 ```
-![alt text](assets/update.png "Update")
+![alt text](assets/update.PNG "Update")
   
 Select example
 ```sql
@@ -56,11 +56,11 @@ SELECT full_name
 FROM athletes
 WHERE birthday > '01-01-2000'
 ```
-![alt text](assets/select.png "Select")
+![alt text](assets/select.PNG "Select")
 
 Delete example
 ```sql
 DELETE FROM athletes
 WHERE full_name = 'Kailey Vincent'
 ```
-![alt text](assets/delete.png "Delete")
+![alt text](assets/delete.PNG "Delete")
