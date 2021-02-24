@@ -5,62 +5,53 @@ Alexandre Pineau
 300066713  
 apine018@uottawa.ca
 
-## Livrable 1
+## Livrable 2
 Notes:
-* J'utilise Microsoft Word pour les schémas visuels
-* J'utilise pgAdmin et le DB de uOttawa
+* J'utilise Microsoft Word et Paint pour créer les schémas visuels
+* J'utilise PHP et PostgreSQL pour l'application
+* J'utilise le serveur web inclus avec PHP (et non Apache)
+* Le README pour le livrable 1 est nommé "deliverable1.md"
+
+## Instructions
+Voici les étapes pour rouler le web app
+1. Il faut avoir PostgreSQL et PHP configuré sur votre machine locale
+2. Change la ligne 17 dans web/index.php pour inclure les crédentials de votre DB personnel
+3. Sur votre DB personel, exécute le fichier "schema.sql" pour créer les tables
+4. Ensuite, exécute le fichier "seed.sql" pour populé ces tables avec des données
+5. À partire dur répertoire /web, run la commande `php -S localhost:8080`
+6. Dans votre browser visite "localhost:8080" et le site devrait s'apparitre
 
 ### Modele ER
-![alt text](assets/ER-model.PNG "ER Model")
+![alt text](assets/deliverable2/er-model.PNG "ER Model")
 
 ### Modele relationnel
-![alt text](assets/relational-model.PNG "Relational Model")
-
-### Schéma SQL
-```sql
-CREATE TABLE athletes (
-  athlete_id int,
-  full_name varchar(128),
-  birthday date,
-  is_male boolean,
-  primary key (athlete_id)
-);
-```
+![alt text](assets/deliverable2/relational-model.PNG "Relational Model")
 
 ### Exemples SQL
-Insert example
+Exemple pour INSERT dans la nouvelle table de `competitions`
 ```sql
-INSERT INTO athletes
-  (athlete_id, full_name, birthday, is_male)
+INSERT INTO competitions
+  (competition_id, competition_name, venue, start_time, end_time, days_long)
 VALUES
-  (1, 'Alexandre Pineau', '06-14-2000', true),
-  (2, 'Robert Naim', '05-13-1998', true),
-  (3, 'Pierre Rofail', '12-05-1960', true),
-  (4, 'CaitLin McNaughton', '07-28-2001', false),
-  (5, 'Alyssa Rose', '12-31-1999', false),
-  (6, 'Michelle Beaulieu', '10-01-1980', false);
+  (4, 'Beer Keg Toss', 'Montreal', '2021-07-01 10:00:00', '2021-07-01 14:00:00', 1)
 ```
-![alt text](assets/insert.PNG "Insert")
-  
-Update example
-```sql
-UPDATE athletes
-SET full_name = 'Kailey Vincent'
-WHERE athlete_id = 6
-```
-![alt text](assets/update.PNG "Update")
-  
-Select example
-```sql
-SELECT full_name 
-FROM athletes
-WHERE birthday > '01-01-2000'
-```
-![alt text](assets/select.PNG "Select")
 
-Delete example
+Exemple de UPDATE dans la nouvelle table de `competitions`
 ```sql
-DELETE FROM athletes
-WHERE full_name = 'Kailey Vincent'
+UPDATE competitions
+SET venue = 'Sudbury'
+WHERE competition_id = 4
 ```
-![alt text](assets/delete.PNG "Delete")
+
+Exemple de SELECT dans la nouvelle table de `competitions`
+```sql
+SELECT competition_name
+FROM competitions
+WHERE days_long < 3
+```
+
+Exemple de DELETE dans la nouvelle table de `competitions`
+```sql
+DELETE FROM competitions
+WHERE competition_id = 4
+```
