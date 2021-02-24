@@ -8,7 +8,13 @@ apine018@uottawa.ca
 ## Livrable 2
 Notes:
 * J'utilise Microsoft Word et Paint pour créer les schémas visuels
-* J'utilise pgAdmin et le DB de uOttawa
+* J'utilise PHP et PostgreSQL pour l'application
+* Le README pour le livrable 1 est nommé "deliverable1.md"
+
+## Instalation
+Voici les étapes d'instalation
+1. Il faut avoir PostgreSQL et PHP configuré sur votre machine locale
+2. 
 
 ### Modele ER
 ![alt text](assets/deliverable2/er-model.PNG "ER Model")
