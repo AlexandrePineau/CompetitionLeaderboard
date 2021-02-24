@@ -22,10 +22,10 @@ Voici les étapes pour rouler le web app
 6. Dans votre browser visite "localhost:8080" et le site devrait s'apparitre
 
 ### Modele ER
-![alt text](assets/deliverable2/er-model.PNG "ER Model")
+![alt text](assets/deliverable2/er-model.png "ER Model")
 
 ### Modele relationnel
-![alt text](assets/deliverable2/relational-model.PNG "Relational Model")
+![alt text](assets/deliverable2/relational-model.png "Relational Model")
 
 ### Exemples SQL
 Exemple pour INSERT dans la nouvelle table de `competitions`
