@@ -5,7 +5,7 @@ Alexandre Pineau
 300066713  
 apine018@uottawa.ca
 
-## Livrable 3
+## Livrable 2
 Notes:
 * J'utilise Microsoft Word et Paint pour créer les schémas visuels
 * J'utilise PHP et PostgreSQL pour l'application
