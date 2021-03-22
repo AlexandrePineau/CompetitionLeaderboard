@@ -8,15 +8,29 @@ CREATE TABLE athletes (
   PRIMARY KEY (athlete_id)
 );
 
+-- Contacts
+CREATE TABLE contacts (
+  contact_id int,
+  contact_name varchar(128),
+  contact_email varchar(128),
+  contact_phone_number varchar(128),
+  PRIMARY KEY (contact_id)
+);
+
 -- Competitions
 CREATE TABLE competitions (
   competition_id int,
   competition_name varchar(128),
-  venue varchar(128),
+  competition_address varchar(128),
   start_time date,
   end_time date,
   days_long int,
-  PRIMARY KEY (competition_id)
+  number_of_events int,
+  max_males int,
+  max_females int,
+  contact_id int,
+  PRIMARY KEY (competition_id),
+  FOREIGN KEY (contact_id) REFERENCES contacts
 );
 
 -- Registrations
@@ -32,8 +46,7 @@ CREATE TABLE partners (
   partner_id int,
   company_name varchar(128),
   company_address varchar(128),
-  contact_name varchar(128),
-  email varchar(128),
-  phone_number varchar(128),
-  PRIMARY KEY (partner_id)
+  contact_id int,
+  PRIMARY KEY (partner_id),
+  FOREIGN KEY (contact_id) REFERENCES contacts
 );
