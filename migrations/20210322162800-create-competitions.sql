@@ -9,7 +9,5 @@ CREATE TABLE competitions (
   number_of_events int,
   max_males int,
   max_females int,
-  contact_id int,
   PRIMARY KEY (competition_id),
-  FOREIGN KEY (contact_id) REFERENCES contacts
 );

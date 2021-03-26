@@ -28,9 +28,7 @@ CREATE TABLE competitions (
   number_of_events int,
   max_males int,
   max_females int,
-  contact_id int,
   PRIMARY KEY (competition_id),
-  FOREIGN KEY (contact_id) REFERENCES contacts
 );
 
 -- Registrations
@@ -46,9 +44,7 @@ CREATE TABLE partners (
   partner_id int,
   company_name varchar(128),
   company_address varchar(128),
-  contact_id int,
   PRIMARY KEY (partner_id),
-  FOREIGN KEY (contact_id) REFERENCES contacts
 );
 
 -- Events
@@ -67,6 +63,8 @@ CREATE TABLE events (
 CREATE TABLE hosts (
   partner_id int,
   competition_id int,
+  contact_id int,
   FOREIGN KEY (partner_id) REFERENCES partners,
-  FOREIGN KEY (competition_id) REFERENCES competitions
+  FOREIGN KEY (competition_id) REFERENCES competitions,
+  FOREIGN KEY (contact_id) REFERENCES contacts
 );
