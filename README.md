@@ -25,7 +25,7 @@ Voici les étapes pour rouler le web app
 ![alt text](assets/deliverable3/er-model.PNG "ER Model")
 
 ### Modele relationnel
-![alt text](assets/deliverable2/relational-model.PNG "Relational Model")
+![alt text](assets/deliverable3/relational-model.PNG "Relational Model")
 
 ### Exemples SQL
 Exemple pour INSERT dans la nouvelle table de `competitions`

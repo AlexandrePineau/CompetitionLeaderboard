@@ -68,3 +68,15 @@ CREATE TABLE hosts (
   FOREIGN KEY (competition_id) REFERENCES competitions,
   FOREIGN KEY (contact_id) REFERENCES contacts
 );
+
+-- Scores
+CREATE TABLE scores (
+  score_id int,
+  athlete_id int,
+  event_id int,
+  reps int,
+  duration_in_seconds int,
+  PRIMARY KEY score_id,
+  FOREIGN KEY (athlete_id) REFERENCES athletes,
+  FOREIGN KEY (event_id) REFERENCES events
+);
