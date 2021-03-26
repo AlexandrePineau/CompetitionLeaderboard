@@ -22,7 +22,7 @@ Voici les étapes pour rouler le web app
 6. Dans votre browser visite "localhost:8080" et le site devrait s'apparitre
 
 ### Modele ER
-![alt text](assets/deliverable2/er-model.PNG "ER Model")
+![alt text](assets/deliverable3/er-model.PNG "ER Model")
 
 ### Modele relationnel
 ![alt text](assets/deliverable2/relational-model.PNG "Relational Model")

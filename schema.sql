@@ -50,3 +50,23 @@ CREATE TABLE partners (
   PRIMARY KEY (partner_id),
   FOREIGN KEY (contact_id) REFERENCES contacts
 );
+
+-- Events
+CREATE TABLE events (
+  event_id int,
+  competition_id int,
+  event_name varchar(128),
+  scoring varchar(128),
+  time_capped varchar(128),
+  tie_breaker varchar(128),
+  PRIMARY KEY (event_id),
+  FOREIGN KEY (competition_id) REFERENCES competitions
+);
+
+-- Hosts
+CREATE TABLE hosts (
+  partner_id int,
+  competition_id int,
+  FOREIGN KEY (partner_id) REFERENCES partners,
+  FOREIGN KEY (competition_id) REFERENCES competitions
+);
