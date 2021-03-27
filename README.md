@@ -18,7 +18,7 @@ Voici les étapes pour rouler le web app
 2. Change la ligne 17 dans web/index.php pour inclure les crédentials de votre DB personnel
 3. Sur votre DB personel, exécute le fichier "schema.sql" pour créer les tables
 4. Ensuite, exécute le fichier "seed.sql" pour populé ces tables avec des données
-5. À partire dur répertoire /web, run la commande `php -S localhost:8080`
+5. À partire du répertoire /web, run la commande `php -S localhost:8080`
 6. Dans votre browser visite "localhost:8080" et le site devrait s'apparitre
 
 ### Modele ER
