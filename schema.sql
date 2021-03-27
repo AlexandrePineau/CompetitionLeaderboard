@@ -28,7 +28,7 @@ CREATE TABLE competitions (
   number_of_events int,
   max_males int,
   max_females int,
-  PRIMARY KEY (competition_id),
+  PRIMARY KEY (competition_id)
 );
 
 -- Registrations
@@ -44,7 +44,7 @@ CREATE TABLE partners (
   partner_id int,
   company_name varchar(128),
   company_address varchar(128),
-  PRIMARY KEY (partner_id),
+  PRIMARY KEY (partner_id)
 );
 
 -- Events
@@ -77,7 +77,7 @@ CREATE TABLE scores (
   reps int,
   duration_in_seconds int,
   weight_in_kg int,
-  PRIMARY KEY score_id,
+  PRIMARY KEY (score_id),
   FOREIGN KEY (athlete_id) REFERENCES athletes,
   FOREIGN KEY (event_id) REFERENCES events
 );
