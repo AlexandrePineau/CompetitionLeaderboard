@@ -25,8 +25,8 @@ VALUES
 
     --Women
     (21, 'caity@gmail.com', 'CaitLin McNaughton', '2001-07-28', false),
-    (22, 'allygal20@outlook.com', 'Alyssa Rose', '1999-12-31', false),
-    (23, 'michybeau@hotmail.com', 'Michelle Beaulieu', '1980-10-01', false),
+    (22, 'billnaithesciguy@gmail.com', 'Naomi Kake', '1997-07-27', false),
+    (23, 'juliarose@gmail.com', 'Julia-Rose Lamoureux', '2004-02-22', false),
     (24, 'bribri33@gmail.com', 'Brianne Grandmont', '1995-07-13', false),
     (25, 'emers00@gmail.com', 'Emilie Lafleur', '2000-02-02', false),
     (26, 'brycelawr@gmail.com', 'Bryce Lawrence', '1975-06-21', false),
@@ -40,7 +40,7 @@ VALUES
     (34, 'nicolea4@gmail.com', 'Nicole Agaiby', '2000-06-20', false),
     (35, 'moisabro@uottawa.ca', 'Morea Haloftis', '1994-02-25', false),
     (36, 'chloegirl123@gmail.com', 'Chloe Whittaker', '2001-01-02', false),
-    (37, 'billnaithesciguy@gmail.com', 'Naomi Kake', '1997-07-27', false),
+    (37, 'allygal20@outlook.com', 'Alyssa Rose', '1999-12-31', false),
     (38, 'rebekkatea@outlook.com', 'Rebekka Turene', '1968-09-05', false),
     (39, 'audreyaudrey@outlook.com', 'Audrey Blanchard', '1995-11-14', false),
-    (40, 'juliarose@gmail.com', 'Julia-Rose Lamoureux', '2004-02-22', false);
+    (40, 'michybeau@hotmail.com', 'Michelle Beaulieu', '1980-10-01', false);

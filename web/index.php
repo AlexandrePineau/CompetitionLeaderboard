@@ -62,10 +62,27 @@
                 $events_query = "
                     SELECT event_name
                     FROM events
-                    WHERE competition_id = " . $competitions[$i]["competition_id"]
+                    WHERE competition_id = " . intval($competitions[$i]["competition_id"])
                     ;
                 $events_result = pg_query($events_query) or die ('Query failed: ' . pg_last_error());
                 $events = pg_fetch_all($events_result);
+
+                // Gather participants from the current competition
+                $athletes_query = "
+                    SELECT athlete_id, full_name, is_male
+                    FROM athletes
+                    WHERE athlete_id IN (
+                        SELECT athlete_id
+                        FROM scores
+                        WHERE event_id IN (
+                            SELECT event_id
+                            FROM events
+                            WHERE competition_id = " . intval($competitions[$i]["competition_id"]) .
+                        ")
+                    )
+                ";
+                $athletes_result = pg_query($athletes_query) or die ('Query failed: ' . pg_last_error());
+                $athletes = pg_fetch_all($athletes_result);
 
                 // Write each event in the current competition
                 echo "
@@ -78,6 +95,46 @@
                     echo "<th>" . $events[$j]["event_name"] . "</th>";
                 }
 
+                // Write competition data from each participant
+                echo "
+                        </tr>
+                        <tr>
+                ";
+                for ($j = 0; $j < count($athletes); $j++) {
+                    // Write current athlete's name
+                    echo "<td>" . $athletes[$j]["full_name"] . "</td>";
+
+                    // Get current athlete's scores
+                    $scores_query = "
+                        SELECT reps, duration_in_seconds, weight_in_kg
+                        FROM scores
+                        WHERE athlete_id = " . intval($athletes[$j]["athlete_id"])
+                    ;
+                    $scores_results = pg_query($scores_query) or die ('Query failed: ' . pg_last_error());
+                    $scores = pg_fetch_all($scores_results);
+
+                    // Write athlete's scores
+                    echo "<td></td>";
+                    for ($k = 0; $k < count($events); $k++) {
+                        echo "<td>";
+                        if ($scores[$k]["reps"] != null) {
+                            echo $scores[$k]["reps"] . "reps\n";
+                        }
+                        if ($scores[$k]["duration_in_seconds"] != null) {
+                            echo $scores[$k]["duration_in_seconds"] . "seconds\n";
+                        }
+                        if ($scores[$k]["weight_in_kg"] != null) {
+                            echo $scores[$k]["weight_in_kg"] . "kilos\n";
+                        }
+                        echo "</td>";
+                    }
+                    echo "
+                        </tr>
+                    ";
+                }
+                echo "
+                    </table>
+                ";
             }
         ?>
     </body>

@@ -26,8 +26,8 @@ VALUES
 
     --Women
     (21, 'caity@gmail.com', 'CaitLin McNaughton', '2001-07-28', false),
-    (22, 'allygal20@outlook.com', 'Alyssa Rose', '1999-12-31', false),
-    (23, 'michybeau@hotmail.com', 'Michelle Beaulieu', '1980-10-01', false),
+    (22, 'billnaithesciguy@gmail.com', 'Naomi Kake', '1997-07-27', false),
+    (23, 'juliarose@gmail.com', 'Julia-Rose Lamoureux', '2004-02-22', false),
     (24, 'bribri33@gmail.com', 'Brianne Grandmont', '1995-07-13', false),
     (25, 'emers00@gmail.com', 'Emilie Lafleur', '2000-02-02', false),
     (26, 'brycelawr@gmail.com', 'Bryce Lawrence', '1975-06-21', false),
@@ -41,10 +41,10 @@ VALUES
     (34, 'nicolea4@gmail.com', 'Nicole Agaiby', '2000-06-20', false),
     (35, 'moisabro@uottawa.ca', 'Morea Haloftis', '1994-02-25', false),
     (36, 'chloegirl123@gmail.com', 'Chloe Whittaker', '2001-01-02', false),
-    (37, 'billnaithesciguy@gmail.com', 'Naomi Kake', '1997-07-27', false),
+    (37, 'allygal20@outlook.com', 'Alyssa Rose', '1999-12-31', false),
     (38, 'rebekkatea@outlook.com', 'Rebekka Turene', '1968-09-05', false),
     (39, 'audreyaudrey@outlook.com', 'Audrey Blanchard', '1995-11-14', false),
-    (40, 'juliarose@gmail.com', 'Julia-Rose Lamoureux', '2004-02-22', false);
+    (40, 'michybeau@hotmail.com', 'Michelle Beaulieu', '1980-10-01', false);
 
 -- Contacts
 INSERT INTO contacts (contact_id, contact_name, contact_email, contact_phone_number)
@@ -93,14 +93,14 @@ INSERT INTO events (event_id, competition_id, event_name, scoring, time_capped, 
 VALUES
     (1, 1, '100kg Hold', 'Time DESC', 'No', 'Yes'),
     (2, 1, '1 Ton Run', 'Time ASC', 'No', 'No'),
-    (3, 1, 'Biggest Lift', 'Weight', 'No', 'No'),
-    (4, 2, '1 Km Race', 'Time', 'No', 'No'),
-    (5, 2, '5 Km Race', 'Time', 'No', 'No'),
-    (6, 3, 'Pushups', 'Reps', 'Yes', 'Yes'),
-    (7, 4, '2Km Frontcrawl', 'Time', 'No', 'No'),
-    (8, 4, '2Km Breaststroke', 'Time', 'No', 'No'),
-    (9, 5, '1 Min Jumps', 'Reps', 'Yes', 'No'),
-    (10, 5, '5 Min Jumps', 'Reps', 'Yes', 'No');
+    (3, 1, 'Biggest Lift', 'Weight DESC', 'No', 'No'),
+    (4, 2, '1 Km Race', 'Time ASC', 'No', 'No'),
+    (5, 2, '5 Km Race', 'Time ASC', 'No', 'No'),
+    (6, 3, 'Pushups', 'Reps DESC', 'Yes', 'Yes'),
+    (7, 4, '2Km Frontcrawl', 'Time ASC', 'No', 'No'),
+    (8, 4, '2Km Breaststroke', 'Time ASC', 'No', 'No'),
+    (9, 5, '1 Min Jumps', 'Reps DESC', 'Yes', 'No'),
+    (10, 5, '5 Min Jumps', 'Reps DESC', 'Yes', 'No');
 
 -- Hosts
 INSERT INTO hosts (partner_id, competition_id, contact_id)
