@@ -60,7 +60,7 @@
 
                 // Gather events from the current competition
                 $events_query = "
-                    SELECT event_name
+                    SELECT event_name, scoring
                     FROM events
                     WHERE competition_id = " . intval($competitions[$i]["competition_id"])
                     ;
@@ -86,13 +86,13 @@
 
                 // Write each event in the current competition
                 echo "
-                    <table>
+                    <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'> .
                         <tr>
-                            <th>Athlete</th>
-                            <th>Points</th>
+                            <th>Athlete ↑↓</th>
+                            <th>Points ↑↓</th>
                 ";
                 for ($j = 0; $j < count($events); $j++) {
-                    echo "<th>" . $events[$j]["event_name"] . "</th>";
+                    echo "<th id='" . $events[$j]["scoring"] . "'>" . $events[$j]["event_name"] . " ↑↓</th>";
                 }
 
                 // Write competition data from each participant
@@ -102,7 +102,11 @@
                 ";
                 for ($j = 0; $j < count($athletes); $j++) {
                     // Write current athlete's name
-                    echo "<td>" . $athletes[$j]["full_name"] . "</td>";
+                    if ($athletes[$j]["is_male"] == "t") {
+                        echo "<td>" . $athletes[$j]["full_name"] . " (M)</td>";
+                    } else {
+                        echo "<td>" . $athletes[$j]["full_name"] . " (F)</td>";
+                    }
 
                     // Get current athlete's scores
                     $scores_query = "
@@ -118,13 +122,13 @@
                     for ($k = 0; $k < count($events); $k++) {
                         echo "<td>";
                         if ($scores[$k]["reps"] != null) {
-                            echo $scores[$k]["reps"] . "reps\n";
+                            echo $scores[$k]["reps"] . " reps\n";
                         }
                         if ($scores[$k]["duration_in_seconds"] != null) {
-                            echo $scores[$k]["duration_in_seconds"] . "seconds\n";
+                            echo $scores[$k]["duration_in_seconds"] . " seconds\n";
                         }
                         if ($scores[$k]["weight_in_kg"] != null) {
-                            echo $scores[$k]["weight_in_kg"] . "kilos\n";
+                            echo $scores[$k]["weight_in_kg"] . " kilos\n";
                         }
                         echo "</td>";
                     }
@@ -137,5 +141,6 @@
                 ";
             }
         ?>
+    <script src="script.js"></script>
     </body>
 </html>
