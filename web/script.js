@@ -10,7 +10,6 @@ var leaderboardIds = [];
 
 for (var i = 0; i < leaderboards.length; i++) {
     leaderboardIds[i] = leaderboards[i].id;
-    console.log(leaderboardIds[i]);
 }
 
 // Adding event listenners to the headers of each leaderboard
@@ -38,11 +37,9 @@ function sortScores(colName, tableId) {
     var leaderboardHeaders = leaderboard.getElementsByTagName("th");
     var leaderboardRows = leaderboard.getElementsByTagName("tr");
     var colNum = 1;
-    var scores = [];
-    var score;
 
     // In case of a single athlete
-    if (leaderboardRows.length < 2) {
+    if (leaderboardRows.length < 3) {
         return;
     }
 
@@ -54,26 +51,67 @@ function sortScores(colName, tableId) {
     }
 
     // Determining which order to sort the scores
-    var colsA = leaderboardRows[1].getElementsByTagName("td");
-    var scoreA = parseInt(colsA[colNum].innerHTML.replace(/\D/g,''));
-    var colsB = leaderboardRows[leaderboardRows.length-1].getElementsByTagName("td");
-    var scoreB = parseInt(colsB[colNum].innerHTML.replace(/\D/g,''));
+    var first, second, cols, val;
+    for (var i = 1; i < leaderboardRows.length; i++) {
+        cols = leaderboardRows[i].getElementsByTagName("td");
+        val = parseInt(cols[colNum].innerHTML.replace(/\D/g,''));
+        if (val != null) {
+            if (first == null) {
+                first = val;
+            } else {
+                second = val;
+                break;
+            }
+        }
+    }
 
-    if (scoreA < scoreB) {
-        // Sorting by DESC
-        for (var i = 1; i < leaderboardRows.length; i++) {
-            colsA = leaderboardRows[i].getElementsByTagName("td");
-            scoreA = parseInt(colsA[colNum].innerHTML.replace(/\D/g,''));
-            for (var j = 2; i < leaderboardRows.length; j++) {
-                colsB = leaderboardRows[j].getElementsByTagName("td");
-                scoreB = parseInt(colsB[colNum].innerHTML.replace(/\D/g,''));
-                if (scoresB )
+    var scoreA, scoreB, temp, index;
+    if (first < second) {
+        // Sorting by DESC (selection sort)
+        for (var i = 1; i < leaderboardRows.length-1; i++) {
+            scoreA = parseInt((leaderboardRows[i].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+            scoreB = parseInt((leaderboardRows[i+1].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+            index = i+1;
+            // Find highest score remaining
+            for (var j = i+1; j < leaderboardRows.length; j++) {
+                temp = parseInt((leaderboardRows[j].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+                if (temp > scoreB) {
+                    scoreB = temp;
+                    index = j;
+                }
+            }
+            // Replace i with highest score remaining
+            if (scoreB > scoreA) {
+                switchRows(leaderboardRows[i], leaderboardRows[index]);
             }
         }
     } else {
-        // Sorting by ASC
-        
+        // Sorting by ASC (selection sort)
+        for (var i = 1; i < leaderboardRows.length-1; i++) {
+            scoreA = parseInt((leaderboardRows[i].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+            scoreB = parseInt((leaderboardRows[i+1].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+            index = i+1;
+            // Find lowest score remaining
+            for (var j = i+1; j < leaderboardRows.length; j++) {
+                temp = parseInt((leaderboardRows[j].getElementsByTagName("td"))[colNum].innerHTML.replace(/\D/g,''));
+                if (temp < scoreB) {
+                    scoreB = temp;
+                    index = j;
+                }
+            }
+            // Replace i with lowest score remaining
+            if (scoreB < scoreA) {
+                switchRows(leaderboardRows[i], leaderboardRows[index]);
+            }
+        } 
     }
+}
+
+// Switches rows in a table (leaderboard)
+function switchRows(row1, row2) {
+    var temp = row1.innerHTML;
+    row1.innerHTML = row2.innerHTML;
+    row2.innerHTML = temp;
 }
 
 // Sorts the given leaderboard by the sexe of its athletes
