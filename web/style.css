@@ -6,7 +6,7 @@ td, th {
     padding: 10px;
 }
 
-th:hover {
+.sortable:hover {
     background-color: rgb(200, 200, 200);
     text-decoration: underline;
     cursor: default;

@@ -31,17 +31,45 @@
                 <td><a href="pages/registrations.php">Registrations</a></td>
                 <td><a href="pages/scores.php">Scores</a></td>
             </tr>
-        </table> 
-
-        <h2>
-            Competition Leaderboards
-        </h2>
+        </table></br></br>
 
         <?php
-            // PRINTING LEADERBOARDS FOR EACH COMPETITION
-
             // Connect to DB
             $dbconn = pg_connect("host=localhost port=5432 dbname=csi2532 user=postgres password=root");
+            
+            // GATHERING GENERAL COMPETITION INFO
+            echo "<h2>Competitions</h2>";
+
+            $info_query = "
+                SELECT competitions.competition_name, competitions.competition_address, competitions.start_time, partners.company_name, contacts.contact_name, contacts.contact_email, contacts.contact_phone_number
+                FROM hosts
+                INNER JOIN competitions ON competitions.competition_id = hosts.competition_id
+                INNER JOIN partners ON partners.partner_id = hosts.partner_id
+                INNER JOIN contacts ON contacts.contact_id = hosts.contact_id
+                ORDER BY competitions.start_time ASC
+            ";
+            $info_results = pg_query($info_query) or die('Query failed: ' . preg_last_error());
+            $info = pg_fetch_all($info_results);
+
+            // Creating table with general info
+            echo "<div class='card bg-light'>";
+            echo "<table>
+                    <tr>
+                        <th>Competition Info</th>
+                        <th>Partner / Sponsor</th>
+                        <th>Contact Info</th>
+                    </tr>";
+            for ($i = 0; $i < count($info); $i++) {
+                echo "<tr>";
+                echo "<td><b>" . $info[$i]['competition_name'] . "</b></br>Location: " . $info[$i]['competition_address'] . "</br>Date: " . $info[$i]['start_time'] . "</td>";
+                echo "<td>" . $info[$i]['company_name'] . "</td>";
+                echo "<td>" . $info[$i]['contact_name'] . ",</br>" . $info[$i]['contact_email'] . ",</br>" . $info[$i]['contact_phone_number'] . "</td>";
+                echo "</tr>";
+            }
+            echo "</table></div></br></br>";
+
+            // PRINTING LEADERBOARDS FOR EACH COMPETITION
+            echo "<h2>Competition Leaderboards</h2>";
 
             // Get competitions with scores data
             $competitions_query = "
@@ -91,14 +119,12 @@
                 $athletes = pg_fetch_all($athletes_result);
 
                 // Write each event in the current competition
-                echo "
-                    <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'>
-                        <tr>
-                            <th>Athlete ↑↓</th>
-                            <th>Points ↑↓</th>
-                ";
+                echo " <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'>
+                            <tr>
+                                <th>Athlete ↑↓</th>
+                                <th>Points ↑↓</th>";
                 for ($j = 0; $j < count($events); $j++) {
-                    echo "<th id='" . $events[$j]["scoring"] . "'>" . $events[$j]["event_name"] . " ↑↓</th>";
+                    echo "<th class='sortable' id='" . $events[$j]["scoring"] . "'>" . $events[$j]["event_name"] . " ↑↓</th>";
                 }
 
                 // Write competition data from each participant

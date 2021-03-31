@@ -28,30 +28,12 @@ Voici les étapes pour rouler le web app
 ![alt text](assets/deliverable3/relational-model.PNG "Relational Model")
 
 ### Exemples SQL
-Exemple pour INSERT dans la nouvelle table de `competitions`
+Query pour montrer l'info général sur le site
 ```sql
-INSERT INTO competitions
-  (competition_id, competition_name, venue, start_time, end_time, days_long)
-VALUES
-  (4, 'Beer Keg Toss', 'Montreal', '2021-07-01 10:00:00', '2021-07-01 14:00:00', 1)
-```
-
-Exemple de UPDATE dans la nouvelle table de `competitions`
-```sql
-UPDATE competitions
-SET venue = 'Sudbury'
-WHERE competition_id = 4
-```
-
-Exemple de SELECT dans la nouvelle table de `competitions`
-```sql
-SELECT competition_name
-FROM competitions
-WHERE days_long < 3
-```
-
-Exemple de DELETE dans la nouvelle table de `competitions`
-```sql
-DELETE FROM competitions
-WHERE competition_id = 4
+SELECT competitions.competition_name, competitions.competition_address, competitions.start_time, partners.company_name, contacts.contact_name, contacts.contact_email, contacts.contact_phone_number
+FROM hosts
+INNER JOIN competitions ON competitions.competition_id = hosts.competition_id
+INNER JOIN partners ON partners.partner_id = hosts.partner_id
+INNER JOIN contacts ON contacts.contact_id = hosts.contact_id
+ORDER BY competitions.start_time ASC
 ```
