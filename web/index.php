@@ -4,15 +4,20 @@
             CSI 2532 - Deliverable 3
         </title>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.css"/>
     </head>
     <body>
-        <h1> 
-            CSI 2532 - Deliverable 3
-        </h1>
-        <h2>
-            Alexandre Pineau - 300066713
-        </h2>
-
+    <div class="container">
+        <div class="jumbotron">
+            <h1> 
+                CSI 2532 - Deliverable 3
+            </h1>
+            <h2>
+                Alexandre Pineau - 300066713
+            </h2>
+        </div>
+        
+        <h2>MeFit Data</h2>
         <table>
             <tr>
                 <td><a href="pages/athletes.php">Athletes</a></td>
@@ -56,7 +61,8 @@
             // Creating leaderboard for each competition
             for ($i = 0; $i < count($competitions); $i++) {
                 // Write competition's title
-                echo "<h3>" . $competitions[$i]['competition_name'] . "</h3>";
+                echo "<h3><u>" . $competitions[$i]['competition_name'] . "</u></h3>";
+                echo "<div class='card bg-light'>";
 
                 // Gather events from the current competition
                 $events_query = "
@@ -86,7 +92,7 @@
 
                 // Write each event in the current competition
                 echo "
-                    <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'> .
+                    <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'>
                         <tr>
                             <th>Athlete ↑↓</th>
                             <th>Points ↑↓</th>
@@ -137,10 +143,13 @@
                     ";
                 }
                 echo "
-                    </table>
+                    </table></div></br></br>
                 ";
             }
         ?>
+    </div>
+    <script src="js/jquery/jquery.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
     <script src="script.js"></script>
     </body>
 </html>
