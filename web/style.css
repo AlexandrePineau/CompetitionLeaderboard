@@ -1,3 +1,13 @@
-table, tr, th, td{
+table, tr, th, td {
     border: 1px solid black;
+}
+
+td, th {
+    padding: 10px;
+}
+
+.sortable:hover {
+    background-color: rgb(200, 200, 200);
+    text-decoration: underline;
+    cursor: default;
 }
