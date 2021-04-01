@@ -20,14 +20,10 @@ for (var i = 0; i < leaderboardIds.length; i++) {
     leaderboard = document.getElementById(leaderboardIds[i]);
     leaderboardHeaders = leaderboard.getElementsByTagName("th");
 
-    for (var j = 0; j < leaderboardHeaders.length; j++) {
+    for (var j = 1; j < leaderboardHeaders.length; j++) {
         let colName = leaderboardHeaders[j].innerHTML;
         let tableId = leaderboardIds[i];
-        if (j == 0) {
-            leaderboardHeaders[j].addEventListener("click", function(){ sortSexes(tableId); });
-        } else if (j > 0) {
-            leaderboardHeaders[j].addEventListener("click", function(){ sortScores(colName, tableId); });
-        }
+        leaderboardHeaders[j].addEventListener("click", function(){ sortScores(colName, tableId); });
     }
 }
 
@@ -112,9 +108,4 @@ function switchRows(row1, row2) {
     var temp = row1.innerHTML;
     row1.innerHTML = row2.innerHTML;
     row2.innerHTML = temp;
-}
-
-// Sorts the given leaderboard by the sexe of its athletes
-function sortSexes(tableId) {
-
 }
