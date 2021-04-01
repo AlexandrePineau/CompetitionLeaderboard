@@ -29,10 +29,10 @@ Voici les étapes pour rouler le web app
 4. Également, les admins on access a tout le MeFit Data; ceux vont illustrer un `SELECT *` du donneé choisi
 
 ## Modele ER
-![alt text](assets/deliverable3/er-model.PNG "ER Model")
+![alt text](assets/deliverable3/er-model.png "ER Model")
 
 ## Modele relationnel
-![alt text](assets/deliverable3/relational-model.PNG "Relational Model")
+![alt text](assets/deliverable3/relational-model.png "Relational Model")
 
 ## Exemples SQL
 Query pour montrer l'info général sur le site
