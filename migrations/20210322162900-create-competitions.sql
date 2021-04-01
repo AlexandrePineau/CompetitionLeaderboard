@@ -9,5 +9,5 @@ CREATE TABLE competitions (
   number_of_events int,
   max_males int,
   max_females int,
-  PRIMARY KEY (competition_id),
+  PRIMARY KEY (competition_id)
 );

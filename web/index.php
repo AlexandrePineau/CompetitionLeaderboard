@@ -105,8 +105,7 @@
                 // Write each event in the current competition
                 echo " <table class='leaderboard'id='" . $competitions[$i]['competition_name'] . "'>
                             <tr>
-                                <th>Athlete ↑↓</th>
-                                <th>Points ↑↓</th>";
+                                <th>Athlete</th>";
                 for ($j = 0; $j < count($events); $j++) {
                     echo "<th class='sortable' id='" . $events[$j]["scoring"] . "'>" . $events[$j]["event_name"] . " ↑↓</th>";
                 }
@@ -134,7 +133,6 @@
                     $scores = pg_fetch_all($scores_results);
 
                     // Write athlete's scores
-                    echo "<td></td>";
                     for ($k = 0; $k < count($events); $k++) {
                         echo "<td>";
                         if ($scores[$k]["reps"] != null) {
