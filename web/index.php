@@ -16,22 +16,6 @@
                 Alexandre Pineau - 300066713
             </h2>
         </div>
-        
-        <h2>MeFit Data</h2>
-        <table>
-            <tr>
-                <td><a href="pages/athletes.php">Athletes</a></td>
-                <td><a href="pages/competitions.php">Competitions</a></td>
-                <td><a href="pages/contacts.php">Contacts</a></td>
-                <td><a href="pages/events.php">Events</a></td>
-            </tr>
-            <tr>
-                <td><a href="pages/hosts.php">Hosts</a></td>
-                <td><a href="pages/partners.php">Partners</a></td>
-                <td><a href="pages/registrations.php">Registrations</a></td>
-                <td><a href="pages/scores.php">Scores</a></td>
-            </tr>
-        </table></br></br>
 
         <?php
             // Connect to DB
@@ -69,7 +53,7 @@
             echo "</table></div></br></br>";
 
             // PRINTING LEADERBOARDS FOR EACH COMPETITION
-            echo "<h2>Competition Leaderboards</h2>";
+            echo "<h2>Leaderboards</h2>";
 
             // Get competitions with scores data
             $competitions_query = "
@@ -89,7 +73,7 @@
             // Creating leaderboard for each competition
             for ($i = 0; $i < count($competitions); $i++) {
                 // Write competition's title
-                echo "<h3><u>" . $competitions[$i]['competition_name'] . "</u></h3>";
+                echo "<h4><u>" . $competitions[$i]['competition_name'] . "</u></h4>";
                 echo "<div class='card bg-light'>";
 
                 // Gather events from the current competition
@@ -173,6 +157,14 @@
                 ";
             }
         ?>
+
+        <h2>Admins</h2>
+        <h4><u>Enter Token</u></h4>
+        <form action="pages/admins.php" method="post">
+            <input type="text" name="token" placeholder="Token" required>
+        <input type="submit">
+        </form>
+
     </div>
     <script src="js/jquery/jquery.js"></script>
     <script src="js/bootstrap/bootstrap.js"></script>
