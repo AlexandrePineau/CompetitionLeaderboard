@@ -26,13 +26,13 @@ Voici les étapes pour rouler le web app
 2. Entrer le token "123abc"
 3. Une fois rentrer, les liens sous MeFit Data vont illustrer un `SELECT *` de toutes les données
 
-### Modele ER
+## Modele ER
 ![alt text](assets/deliverable3/er-model.PNG "ER Model")
 
-### Modele relationnel
+## Modele relationnel
 ![alt text](assets/deliverable3/relational-model.PNG "Relational Model")
 
-### Exemples SQL
+## Exemples SQL
 Query pour montrer l'info général sur le site
 ```sql
 SELECT competitions.competition_name, competitions.competition_address, competitions.start_time, partners.company_name, contacts.contact_name, contacts.contact_email, contacts.contact_phone_number
@@ -43,4 +43,9 @@ INNER JOIN contacts ON contacts.contact_id = hosts.contact_id
 ORDER BY competitions.start_time ASC
 ```
 
-Voir les fichers sample-(datatype).sql pour des exmples de insert de chaque type
+## Notes générales
+- Voir les fichers sample-(datatype).sql pour des exmples de insert de chaque type
+- Le fichier web/index.php contient toute le code pour créer le leaderboard
+- Le fichier web/script.js contient toute le code pour trier le leaderboard
+- Le répertoire /pages contient toutes les pages pertinent aux admins
+- J'utilise Bootstrap et JS pour le front end
