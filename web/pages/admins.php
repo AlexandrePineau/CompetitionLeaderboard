@@ -26,8 +26,15 @@
                             <td><a href='registrations.php'>Registrations</a></td>
                             <td><a href='scores.php'>Scores</a></td>
                         </tr>
-                    </table></br></br>";
+                    </table></br></br>
+                    
+                    <h1>Add Partners</h1>
+                    <form action='validatePartner.php' method='post'>
+                        Company Name:</br><input type='text' name='company_name' required></br></br>
+                        Company Address:</br><input type='text' name='company_address' required></br></br>
+                    <input type='submit'>";
             }
         ?>
+        <h1>Register Athletes</h1>
     </body>
 </html>
