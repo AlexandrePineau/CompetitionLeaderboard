@@ -5,7 +5,7 @@ Alexandre Pineau
 300066713  
 apine018@uottawa.ca
 
-## Livrable 4
+## Livrable 3
 Notes:
 * J'utilise Microsoft Word et Paint pour créer les schémas visuels
 * J'utilise PHP et PostgreSQL pour l'application
@@ -35,7 +35,6 @@ Voici les étapes pour rouler le web app
 ![alt text](assets/deliverable3/relational-model.png "Relational Model")
 
 ## Exemples SQL
-### SELECT
 Query pour montrer l'info général sur le site
 ```sql
 SELECT competitions.competition_name, competitions.competition_address, competitions.start_time, partners.company_name, contacts.contact_name, contacts.contact_email, contacts.contact_phone_number
@@ -45,40 +44,10 @@ INNER JOIN partners ON partners.partner_id = hosts.partner_id
 INNER JOIN contacts ON contacts.contact_id = hosts.contact_id
 ORDER BY competitions.start_time ASC
 ```
-
-### INSERT
-Ajouter des evenements
-```sql
-INSERT INTO events (event_id, competition_id, event_name, scoring, time_capped, tie_breaker)
-VALUES
-    (1, 1, '100kg Hold', 'Time DESC', 'No', 'Yes'),
-    (2, 1, '1 Ton Run', 'Time ASC', 'No', 'No'),
-    (3, 1, 'Biggest Lift', 'Weight DESC', 'No', 'No'),
-    (4, 2, '1 Km Race', 'Time ASC', 'No', 'No'),
-    (5, 2, '5 Km Race', 'Time ASC', 'No', 'No'),
-    (6, 3, 'Pushups', 'Reps DESC', 'Yes', 'Yes'),
-    (7, 4, '2Km Frontcrawl', 'Time ASC', 'No', 'No'),
-    (8, 4, '2Km Breaststroke', 'Time ASC', 'No', 'No'),
-    (9, 5, '1 Min Jumps', 'Reps DESC', 'Yes', 'No'),
-    (10, 5, '5 Min Jumps', 'Reps DESC', 'Yes', 'No')
-```
-
-### UPDATE
-Changer le nom d'un evenement
-```sql
-UPDATE events
-SET event_name = '200kg hold'
-WHERE event_id = 1
-```
-
-### DELETE
-Enlever l'evenment 10
-```sql
-DELETE FROM events
-WHERE event_id = 10
-```
+\* La plupart des nouveaux requetes dans ce livrable utilise des donnees dynamiques avec php. Voir `seed.sql` pour tous les nouveaux inserts
 
 ## Notes additionels
+- Voir les fichers sample-(datatype).sql pour des exmples de insert de chaque type
 - Le fichier web/index.php contient toute le code pour créer le leaderboard
 - Le fichier web/script.js contient toute le code pour trier le leaderboard
 - Le répertoire /pages contient toutes les pages pertinent aux admins
