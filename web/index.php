@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            CSI 2532 - Deliverable 3
+            CSI 2532 - Deliverable 4
         </title>
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="css/bootstrap/bootstrap.css"/>
@@ -10,7 +10,7 @@
     <div class="container">
         <div class="jumbotron">
             <h1> 
-                CSI 2532 - Deliverable 3
+                CSI 2532 - Deliverable 4
             </h1>
             <h2>
                 Alexandre Pineau - 300066713

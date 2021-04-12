@@ -12,6 +12,8 @@ Notes:
 * J'utilise le serveur web inclus avec PHP (et non Apache)
 * Le README pour le livrable 1 est nommé "deliverable1.md"
 * Le README pour le livrable 2 est nommé "deliverable2.md"
+* Le README pour le livrable 3 est nommé "deliverable3.md"
+* La présentation est dans `/presentation.pptx`
 
 ## Instructions de setup 
 Voici les étapes pour rouler le web app
